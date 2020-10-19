@@ -8,11 +8,13 @@
         <button type="submit">Добавить сообщение</button>
     </form>
 </div>
-    <div>Список сообщений</div>
-    {{#messages}}
+<div>Список сообщений</div>
+{{#messages}}
+    <div>
         <b>{{id}}</b>
-        <span>{{name}}</span>
+        <span>{{text}}</span>
         <i>{{tag}}</i>
-    {{/messages}}
+    </div>
+{{/messages}}
 </body>
 </html>
