@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.controllers;
+package ru.dmartyanov.greetings.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import ru.dmartyanov.greetings.repos.MessageRepo;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private MessageRepo messageRepos;
 
