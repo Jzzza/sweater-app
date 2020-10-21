@@ -15,5 +15,6 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user) {
 
+        return "redirect:/login";
     }
 }
