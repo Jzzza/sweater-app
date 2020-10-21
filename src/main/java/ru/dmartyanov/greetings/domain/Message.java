@@ -16,6 +16,8 @@ public class Message{
     private String text;
     private String tag;
 
+    private User authtor;
+
     public Message() {
     }
 
@@ -46,5 +48,13 @@ public class Message{
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public void setAuthtor(User authtor) {
+        this.authtor = authtor;
+    }
+
+    public User getAuthtor() {
+        return authtor;
     }
 }
