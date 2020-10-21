@@ -36,7 +36,7 @@ public class MainController {
             @RequestParam String text,
             @RequestParam String tag,
             Map<String, Object> model) {
-        Message message = new Message(text, tag);
+        Message message = new Message(text, tag, user);
         messageRepos.save(message);
         Iterable<Message> messages = messageRepos.findAll();
         model.put("messages", messages);
