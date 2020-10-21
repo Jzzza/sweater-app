@@ -1,11 +1,13 @@
 package ru.dmartyanov.greetings.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.dmartyanov.greetings.domain.Message;
+import ru.dmartyanov.greetings.domain.User;
 import ru.dmartyanov.greetings.repos.MessageRepo;
 
 import java.util.Map;
@@ -22,16 +24,18 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(Map<String, Object> model){
+    public String main(Map<String, Object> model) {
         Iterable<Message> messages = messageRepos.findAll();
         model.put("messages", messages);
         return "main";
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String text,
-                      @RequestParam String tag,
-                      Map<String, Object> model) {
+    public String add(
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag,
+            Map<String, Object> model) {
         Message message = new Message(text, tag);
         messageRepos.save(message);
         Iterable<Message> messages = messageRepos.findAll();

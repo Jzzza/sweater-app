@@ -16,14 +16,15 @@ public class Message{
     private String text;
     private String tag;
 
-    private User authtor;
+    private User author;
 
     public Message() {
     }
 
-    public Message(String text, String tag) {
+    public Message(String text, String tag, User author) {
         this.text = text;
         this.tag = tag;
+        this.author = author;
     }
 
     public Integer getId() {
@@ -50,11 +51,11 @@ public class Message{
         this.tag = tag;
     }
 
-    public void setAuthtor(User authtor) {
-        this.authtor = authtor;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public User getAuthtor() {
-        return authtor;
+    public User getAuthor() {
+        return author;
     }
 }
