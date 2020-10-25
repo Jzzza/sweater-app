@@ -4,7 +4,7 @@ package ru.dmartyanov.greetings.domain;
 import javax.persistence.*;
 
 @Entity
-public class Message{
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +16,8 @@ public class Message{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+
+    private String filename;
 
     public Message() {
     }
@@ -50,15 +52,23 @@ public class Message{
         this.tag = tag;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
     public User getAuthor() {
         return author;
     }
 
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
     public String getAuthorName() {
         return author != null ? author.getUsername() : "<none>";
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
