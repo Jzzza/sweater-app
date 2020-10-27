@@ -1,6 +1,7 @@
 package ru.dmartyanov.greetings.service;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,11 +16,12 @@ import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
-    private final UserRepo userRepo;
+    @Autowired
+    private  UserRepo userRepo;
 
-    public UserService(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
+    @Autowired
+    private MailSender mailSender;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findByUsername(username);
@@ -38,7 +40,13 @@ public class UserService implements UserDetailsService {
         userRepo.save(user);
 
         if(!StringUtils.isEmpty(user.getEmail())){
-
+            String message = String.format(
+                    "Hello, %s \n" +
+                            "Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
+                    user.getUsername(),
+                    user.getActivationCode()
+            );
+            mailSender.send(user.getEmail(),"Activation code", message);
         }
 
         return true;
