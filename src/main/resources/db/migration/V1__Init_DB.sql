@@ -1,4 +1,4 @@
-create table hibernate_sequence (next_val bigint) engine=InnoDB;
+create table hibernate_sequence (next_val bigint);
 insert into hibernate_sequence values ( 1 );
 insert into hibernate_sequence values ( 1 );
 create table message (id bigint not null, filename varchar(2048), tag varchar(2048), text varchar(2048) not null, user_id bigint, primary key (id));
