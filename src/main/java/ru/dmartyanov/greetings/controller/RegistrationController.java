@@ -1,6 +1,7 @@
 package ru.dmartyanov.greetings.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -20,6 +21,9 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
+    @Value("${recaptcha.secret}")
+    private String secret;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -28,6 +32,7 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(
             @RequestParam("password2") String passwordConfirm,
+            @RequestParam("g-recaptch-response") String captchaResponse,
             @Valid User user,
             BindingResult bindingResult,
             Model model) {
