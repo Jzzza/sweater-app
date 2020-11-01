@@ -3,10 +3,12 @@ package ru.dmartyanov.greetings.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.dmartyanov.greetings.domain.User;
 import ru.dmartyanov.greetings.service.UserService;
 
@@ -24,14 +26,22 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(@Valid User user,
-                          BindingResult bindingResult,
-                          Model model) {
-        if(user.getPassword()!= null && !user.getPassword().equals(user.getPassword2())){
+    public String addUser(
+            @RequestParam("password2") String passwordConfirm,
+            @Valid User user,
+            BindingResult bindingResult,
+            Model model) {
+        boolean isConfirmEmpty = StringUtils.isEmpty(passwordConfirm);
+
+        if (isConfirmEmpty) {
+            model.addAttribute("password2Error", "Password confirmation cannot be empty");
+        }
+
+        if (user.getPassword() != null && !user.getPassword().equals(passwordConfirm)) {
             model.addAttribute("passwordError", "Passwords are different!");
         }
 
-        if (bindingResult.hasErrors()) {
+        if (isConfirmEmpty || bindingResult.hasErrors()) {
             Map<String, String> errors = ControllerUtils.getErrors(bindingResult);
 
             model.mergeAttributes(errors);
@@ -49,7 +59,7 @@ public class RegistrationController {
 
     @GetMapping("/activate/{code}")
     public String activate(Model model,
-                           @PathVariable String code){
+                           @PathVariable String code) {
         boolean isActivated = userService.activateUser(code);
 
         if (isActivated) {
