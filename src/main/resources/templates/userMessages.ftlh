@@ -3,6 +3,6 @@
 <@c.page>
 <#if isCurrentUser>
     <#include "parts/messageEdit.ftlh" />
-<#/if>
+</#if>
 <#include "parts/messageList.ftlh" />
 </@c.page>
