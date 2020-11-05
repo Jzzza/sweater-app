@@ -2,7 +2,14 @@
 
 <@c.page>
 <h3>${userChannel.username}</h3>
-<div class="container">
+<#if !isCurrentUser>
+    <#if isSubscriber>
+        <a class="btn btn-info" href="/user/unsubscribe/${userChannel.id}">Unsubscriber</a>
+    <#else>
+        <a class="btn btn-info" href="/user/subscribe/${userChannel.id}">Subscriber</a>
+    </#if>
+</#if>
+<div class="container my-3">
     <div class="row>
         <div class="col">
             <div class="card">

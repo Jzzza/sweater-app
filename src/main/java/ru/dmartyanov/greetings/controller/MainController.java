@@ -109,6 +109,7 @@ public class MainController {
         model.addAttribute("subscriptionsCount", user.getSubscriptions().size());
         model.addAttribute("subscribersCount", user.getSubscribers().size());
         model.addAttribute("isCurrentUser", currentUser.equals(user));
+        model.addAttribute("isSubscriber", user.getSubscribers().contains(currentUser));
         return "userMessages";
     }
 
