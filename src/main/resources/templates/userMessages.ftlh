@@ -4,9 +4,9 @@
 <h3>${userChannel.username}</h3>
 <#if !isCurrentUser>
     <#if isSubscriber>
-        <a class="btn btn-info" href="/user/unsubscribe/${userChannel.id}">Unsubscriber</a>
+        <a class="btn btn-info" href="/user/unsubscribe/${userChannel.id}">Unsubscribe</a>
     <#else>
-        <a class="btn btn-info" href="/user/subscribe/${userChannel.id}">Subscriber</a>
+        <a class="btn btn-info" href="/user/subscribe/${userChannel.id}">Subscribe</a>
     </#if>
 </#if>
 <div class="container my-3">
@@ -18,7 +18,7 @@
                         Subscriptions
                     </div>
                     <h3 class="card-text">
-                        <a href="/user/subscriptions/${userChannel.id}">${subscriptionsCount}</a>
+                        <a href="/user/subscriptions/${userChannel.id}/list">${subscriptionsCount}</a>
                     </h3>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                         Subscribers
                     </div>
                     <h3 class="card-text">
-                        <a href="/user/subscribers/${userChannel.id}">${subscribersCount}</a>
+                        <a href="/user/subscribers/${userChannel.id}/list">${subscribersCount}</a>
                     </h3>
                 </div>
             </div>
