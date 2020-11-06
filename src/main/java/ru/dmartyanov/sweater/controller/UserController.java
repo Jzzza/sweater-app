@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.controller;
+package ru.dmartyanov.sweater.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -6,9 +6,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.dmartyanov.greetings.domain.Role;
-import ru.dmartyanov.greetings.domain.User;
-import ru.dmartyanov.greetings.service.UserService;
+import ru.dmartyanov.sweater.domain.Role;
+import ru.dmartyanov.sweater.domain.User;
+import ru.dmartyanov.sweater.service.UserService;
 
 import java.util.Map;
 

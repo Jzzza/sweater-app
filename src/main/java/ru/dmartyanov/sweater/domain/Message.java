@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.domain;
+package ru.dmartyanov.sweater.domain;
 
 
 import org.hibernate.validator.constraints.Length;

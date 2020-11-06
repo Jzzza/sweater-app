@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.service;
+package ru.dmartyanov.sweater.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

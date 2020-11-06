@@ -1,7 +1,7 @@
-package ru.dmartyanov.greetings.repos;
+package ru.dmartyanov.sweater.repos;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.dmartyanov.greetings.domain.Message;
+import ru.dmartyanov.sweater.domain.Message;
 
 import java.util.List;
 

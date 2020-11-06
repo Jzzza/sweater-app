@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.controller;
+package ru.dmartyanov.sweater.controller;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;

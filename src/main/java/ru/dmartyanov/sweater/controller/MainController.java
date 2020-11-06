@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.controller;
+package ru.dmartyanov.sweater.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import ru.dmartyanov.greetings.domain.Message;
-import ru.dmartyanov.greetings.domain.User;
-import ru.dmartyanov.greetings.repos.MessageRepo;
+import ru.dmartyanov.sweater.domain.Message;
+import ru.dmartyanov.sweater.domain.User;
+import ru.dmartyanov.sweater.repos.MessageRepo;
 
 import javax.validation.Valid;
 import java.io.File;

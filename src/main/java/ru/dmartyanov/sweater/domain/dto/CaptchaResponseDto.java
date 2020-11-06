@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.domain.dto;
+package ru.dmartyanov.sweater.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

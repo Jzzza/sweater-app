@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.config;
+package ru.dmartyanov.sweater.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

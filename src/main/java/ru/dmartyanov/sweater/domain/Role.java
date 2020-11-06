@@ -1,4 +1,4 @@
-package ru.dmartyanov.greetings.domain;
+package ru.dmartyanov.sweater.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 

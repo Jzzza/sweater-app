@@ -1,7 +1,7 @@
-package ru.dmartyanov.greetings.repos;
+package ru.dmartyanov.sweater.repos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.dmartyanov.greetings.domain.User;
+import ru.dmartyanov.sweater.domain.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {
     User findByUsername(String username);
