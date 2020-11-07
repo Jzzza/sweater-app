@@ -5,15 +5,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.dmartyanov.sweater.controller.MainController;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,7 +28,7 @@ public class LoginTest {
     private MainController controller;
 
     @Test
-    public void test() throws Exception {
+    public void contextLoad() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -35,7 +37,28 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest() throws Exception {
+    public void accessDeniedTest() throws Exception {
+        this.mockMvc.perform(get("/main"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("http://localhost/login"));
+    }
 
+    @Test
+    public void correctLogin() throws Exception {
+        SecurityMockMvcRequestBuilders.FormLoginRequestBuilder form = formLogin()
+                .user("test")
+                .password("test");
+        this.mockMvc.perform(form)
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/"));
+    }
+
+    @Test
+    public void badCredentials() throws Exception{
+        this.mockMvc.perform(post("/login").param("user", "Alfred"))
+                .andDo(print())
+                .andExpect(status().isForbidden());
     }
 }
