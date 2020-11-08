@@ -47,7 +47,7 @@ public class LoginTest {
     @Test
     public void correctLogin() throws Exception {
         SecurityMockMvcRequestBuilders.FormLoginRequestBuilder form = formLogin()
-                .user("test")
+                .user("dru")
                 .password("test");
         this.mockMvc.perform(form)
                 .andDo(print())
