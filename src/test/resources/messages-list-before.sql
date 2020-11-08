@@ -4,6 +4,6 @@ insert into message(id, text, tag, user_id) values
  (1, 'first', 'my-tag', 1),
  (2, 'second', 'more', 1),
  (3, 'third', 'my-tag', 1),
- (4, 'fourth', 'another', 1);
+ (4, 'fourth', 'another', 2);
 
-ALTER TABLE hibernate_sequence AUTO_INCREMENT = 10;
+UPDATE hibernate_sequence SET next_val = 10
