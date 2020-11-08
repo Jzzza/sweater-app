@@ -1,5 +1,5 @@
 <#include "security.ftlh">
-<div class="card-columns">
+<div class="card-columns" id="message-list">
     <#list messages as message>
     <div class="card my-3">
         <#if message.filename??>
