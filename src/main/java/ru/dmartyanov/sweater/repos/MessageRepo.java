@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import ru.dmartyanov.sweater.domain.Message;
 
 public interface MessageRepo extends CrudRepository<Message, Long> {
-    Page<Message> find(Pageable pageable);
+    Page<Message> findAll(Pageable pageable);
 
     Page<Message> findByTag(String tag, Pageable pageable);
 }
