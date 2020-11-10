@@ -11,4 +11,11 @@ public class SimpleTest {
 
         Assert.assertEquals(46, x * y);
     }
+
+    @Test(expected = ArithmeticException.class)
+    public void error(){
+        int i =0;
+
+        int i1 = 1 / i;
+    }
 }
