@@ -8,10 +8,15 @@ import ru.dmartyanov.sweater.domain.Message;
 import ru.dmartyanov.sweater.domain.User;
 import ru.dmartyanov.sweater.repos.MessageRepo;
 
+import javax.persistence.EntityManager;
+
 @Service
 public class MessageService {
     @Autowired
     private MessageRepo messageRepo;
+
+    @Autowired
+    private EntityManager em;
 
     public Page<Message> messageList(Pageable pageable, String filter) {
         if (filter != null && !filter.isEmpty()) {
